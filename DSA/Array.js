@@ -5,7 +5,10 @@
  * Complexity:
  *  push() operation will be O(1) since we only have to update the length of the array and add the new element.
 */
-
+const gpv = [1, 2, 3, 4];
+gpv.push(5) // [1, 2, 3, 4, 5];
+gpv.push(7) // [1, 2, 3, 4, 5, 7];
+gpv.push(9) // [1, 2, 3, 4, 5, 7, 9];
 
 
 
