@@ -79,7 +79,7 @@ function traverse(node, obj, L, R) {
 
     // check left if-cond && check right if-cond  1 <= low <= high <= 10^5
         // true add the sum of values
-    if(node.val >= L && node.val <= R) obj.sum += node.val; // root = [10,5,15,3,7,null,18], low = 7, high = 15  // 7 + 10 + 15
+    if(node.val >= L && node.val <=clear R) obj.sum += node.val; // root = [10,5,15,3,7,null,18], low = 7, high = 15  // 7 + 10 + 15
     
     traverse(node.left, obj, L, R);
     traverse(node.right, obj, L, R);
@@ -104,22 +104,22 @@ const rangeSumBST_stack_DFS = function(root, low, high) {
     // create sum var = 0
     let sum = 0;
     // create w/ root val's
-    let stack = [root];
+    let stack = [root]; //  stack =  [10,5,15,3,7,null,18].pop()
 
     // iterate over our stack.length
     while(stack.length) {
         // remove from our stack
-        const node = stack.pop(); // DFS traversal of the tree using a stack (LIFO)
+        const node = stack.pop(); // DFS traversal of the tree using a stack (LIFO) // node = stack = [10,5,15,3,7,null,18].pop()
 
         // if-cond we have values to pop
         // pop - 18, 15, 7, 3, 5, 10
         if(node) {
-            if(node.val >= low && node.val <= high) sum += node.val;  // 18
+            if(node.val >= low && node.val <= high) sum += node.val;  // low = 7, high = 15 // 18 7, 10, 15
 
             // check left side
-            if(node.left > low) stack.push(node.left); // 18
+            if(node.left > low) stack.push(node.left); // 5, 3
             // check right side
-            if(node.right < high) stack.push(node.right); 
+            if(node.right < high) stack.push(node.right); // 15, 18
         }
     }
     
@@ -151,3 +151,44 @@ how do I check children values? if children values, check if higher or lower tha
 const rangeSumBST = function(root, low, high) {
     
 };
+
+
+
+
+
+
+const rangeSumBST_stack_DFS = function(root, low, high) {
+    // create sum var = 0
+    let sum = 0;
+    // create w/ root val's
+    let stack = [root]; //  stack =  [10,5,15,3,7,null,18].pop()
+    console.log("stack line 36:", stack)
+
+    // iterate over our stack.length
+    while(stack.length) {
+        // remove from our stack
+        const node = stack.pop(); // DFS traversal of the tree using a stack (LIFO) // node = stack = [10,5,15,3,7,null,18].pop()
+        console.log("node line 42 w/ pop:", node);
+
+        // if-cond we have values to pop
+        // pop - 18, 15, 7, 3, 5, 10
+        if(node) {
+            console.log("node line 47 if-cond:", node);
+            if(node.val >= low && node.val <= high) sum += node.val;  // low = 7, high = 15 // 18 7, 10, 15
+
+            // check left side
+            if(node.left > low) {
+                console.log("stack w/ node.left before push:", stack);
+                stack.push(node.left); // 5, 3
+                console.log("stack w/ node.left after push:", stack);
+            }s
+            // check right side
+            if(node.right < high) {
+                console.log("stack w/ node.right before push:", stack);
+                stack.push(node.right); // 15, 18
+                console.log("stack w/ node.right after push:", stack);
+            }
+        }
+    }
+    
+}
