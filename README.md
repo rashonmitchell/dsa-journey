@@ -27,3 +27,30 @@
     * Can you check the result? Can you check the argument?
     * Can you derive the solution differently? Can you see it at a glance?
     * Can you use the result, or the method, for some other problem?
+
+
+```js
+function nameHERE(params){
+    // create storage variable
+    let result = [];
+
+    // iterate over params data
+    for (let i = 0; i < params.length; i++) {
+
+        // if-cond || if-statement-else-logic
+        if (params[i] === 0) {  // if-cond
+            // add something to created storage variable
+            // do something
+            result.push(params[i]);
+
+        } else {  // if-statement-else-logic
+            // do something
+            result.push(params[i - 1]); // do something at index i - 1 of params aka the end of the array
+
+        }
+    }
+
+    // return storage variable results\
+    return result;
+  }
+```
