@@ -1,0 +1,27 @@
+{
+  "name": "dsa-journey",
+  "version": "1.0.0",
+  "description": "dsa study",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rashonmitchell/dsa-journey/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rashonmitchell/dsa-journey.git"
+  },
+  "keywords": [],
+  "homepage": "https://github.com/rashonmitchell/dsa-journey#readme",
+  "dependencies": {
+    "node": "^16.6.1"
+  }
+}

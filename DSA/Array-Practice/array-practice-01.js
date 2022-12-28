@@ -81,12 +81,20 @@ const removeEven5 = (arr) => {
     console.log("arr 81: ", arr)
     for(let idx = 0; idx < arr.length; idx++) {
         if(arr[idx] % 2 === 0){
-            arr.pop(); 
-            console.log("arr: ", arr)
+            // arr.pop(); 
+            // console.log("arr: ", arr)
+            let c = arr[arr.length - 1];
+            arr[idx] = c
+            arr.pop()
             idx--;
+            
         }
     }
     return arr;
 }
 console.log("pop method", removeEven5([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])); // [1, 3, 5, 7, 9]
-//[1, 2, 3, 4, 5, 6, 7, 8, 9,]
+
+//arr: [1, 9, 3, 7, 5]
+//                  i
+//idx: 5
+//c= 6
