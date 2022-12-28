@@ -3,7 +3,7 @@
  *
  * https://leetcode.com/problems/evaluate-reverse-polish-notation/description/
  *
- * * Evaluate the value of an arithmetic expression in Reverse Polish Notation.
+ * Evaluate the value of an arithmetic expression in Reverse Polish Notation.
  * 
  * Valid operators are +, -, *, and /. Each operand may be an integer or
  * another expression.
@@ -17,14 +17,12 @@
  * 
  * Example 1:
  * 
- * 
  * Input: tokens = ["2","1","+","3","*"]
  * Output: 9
  * Explanation: ((2 + 1) * 3) = 9
  * 
  * 
  * Example 2:
- * 
  * 
  * Input: tokens = ["4","13","5","/","+"]
  * Output: 6
@@ -67,21 +65,10 @@
 //    -----     1
 //   -------    2
 
-let map = {
-    "(" : ")",
-    "{" : "}",
-    "[" : "]",
-}
 
-// (3*4) + (5*6)  = 3, 4, * 5, 6, *, +
+// (3*4) + (5*6)  = 3, 4, * 5, 6, +, *, 
 // 300 = "3", "0, "0"
 // 300, 3
-let lookUP = {
-    "+" : (a, b) => a + b,
-    "-" : (a, b) => a - b,
-    "*" : (a, b) => a * b,
-    "/" : (a, b) => Math.trunc(a / b),
-}
 
 // Math.trunc = A numeric expression.
 // Returns the integral part of the a numeric expression, x, removing any fractional digits.
@@ -89,9 +76,24 @@ let lookUP = {
 
 const evalRPN = function(tokens) {
     // create storage variable
-    let stack = [];
+    let stack = [], map = {
+        "+" : (a, b) => a + b,
+        "-" : (a, b) => a - b,
+        "*" : (a, b) => a * b,
+        "/" : (a, b) => Math.trunc(a / b),
+    }
 
     // iterate over params
+    for(let token of tokens) {
         // conditonal look-up
-
+        if (token in map) {
+            const b = stack.pop();
+            const a = stack.pop();
+            stack.push(map[token](a, b)); 
+        } else {
+            stack.push(Number(token));
+        }
+    }
+    return stack.pop();
 }
+

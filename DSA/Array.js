@@ -1,16 +1,23 @@
 /** 
+* @param {Array.[]} 
+* @param {Access: worst - 0(1)} 
+* @param {Insert head: worst - 0(n)}
+* @param {Insert tail: worst - 0(1)}
+* @param {Search: worst - 0(n)}
+* @param {Delete: worst - 0(n)}
+* /
+
+/** 
  * Push() -
  *  method adds a new element to the end of an array and returns the new array length.
  * 
  * Complexity:
  *  push() operation will be O(1) since we only have to update the length of the array and add the new element.
 */
-const gpv = [1, 2, 3, 4];
-gpv.push(5) // [1, 2, 3, 4, 5];
-gpv.push(7) // [1, 2, 3, 4, 5, 7];
-gpv.push(9) // [1, 2, 3, 4, 5, 7, 9];
-
-
+const adding = [1, 2, 3, 4];
+adding.push(5) // [1, 2, 3, 4, 5];
+adding.push(7) // [1, 2, 3, 4, 5, 7];
+adding.push(9) // [1, 2, 3, 4, 5, 7, 9];
 
 
 /**
@@ -21,8 +28,10 @@ gpv.push(9) // [1, 2, 3, 4, 5, 7, 9];
  *  pop() operation will be O(1) since we only have to update the length of the array and remove the end index.
  */
 
-
-
+const removing = [1, 2, 3, 4, 5];
+removing.pop() // [1, 2, 3, 4];   5 is popped off
+removing.pop() // [1, 2, 3];   4 is popped off
+removing.pop() // [1, 2];   3 is popped off
 
 
  /**
@@ -47,8 +56,10 @@ gpv.push(9) // [1, 2, 3, 4, 5, 7, 9];
  *  shift all the elements to the right, and then add the new element at index 0.
  */
 
-
-
+const unshifting = [1, 2, 3, 4, 5];
+unshifting.unshift(0) // [0, 1, 2, 3, 4, 5];
+unshifting.unshift(-1) // [-1, 0, 1, 2, 3, 4, 5];
+unshifting.unshift(-2) // [-2, -1, 0, 1, 2, 3, 4, 5];
 
 
 /**
@@ -153,3 +164,24 @@ gpv.push(9) // [1, 2, 3, 4, 5, 7, 9];
  *  
  */
 
+
+const array = [1, 2, 3];
+
+// examples: Insert at tail
+// time: 0(1)
+
+function insertAtTail(array, element) {
+    array.push(element);
+    return array;
+}
+console.log(insertAtTail(array, 4)) // [1, 2, 3, 4];
+
+
+// examples: Appending to head
+// time: 0(n)
+
+function insertAtHead(array, element) {
+    array.unshift(element);
+    return array;
+}
+console.log(insertAtTail(array, 0)) // [0, 1, 2, 3];
