@@ -15,7 +15,7 @@
  *  push() operation will be O(1) since we only have to update the length of the array and add the new element.
 */
 const adding = [1, 2, 3, 4];
-adding.push(5) // [1, 2, 3, 4, 5];
+console.log("pushing", adding.push(5), adding) // [1, 2, 3, 4, 5];
 adding.push(7) // [1, 2, 3, 4, 5, 7];
 adding.push(9) // [1, 2, 3, 4, 5, 7, 9];
 
@@ -43,8 +43,11 @@ removing.pop() // [1, 2];   3 is popped off
  *  shift all the elements to the left, and then update the length of an array.
  */
 
-
-
+let numbers = [10, 20, 30, 40];
+let results = numbers.shift();
+console.log("results: ", results) // output: 10
+console.log("numbers: ", numbers) // output: [ 20, 30, 40 ]
+console.log({"numbers length: ": numbers.length}) // output: 3
 
 
 /**
@@ -57,10 +60,14 @@ removing.pop() // [1, 2];   3 is popped off
  */
 
 const unshifting = [1, 2, 3, 4, 5];
-unshifting.unshift(0) // [0, 1, 2, 3, 4, 5];
-unshifting.unshift(-1) // [-1, 0, 1, 2, 3, 4, 5];
-unshifting.unshift(-2) // [-2, -1, 0, 1, 2, 3, 4, 5];
+console.log("line 58: ", unshifting.unshift(0), unshifting) // 6 length = which is [0, 1, 2, 3, 4, 5]
+console.log("line 59: ", unshifting.unshift(-1)) // 7 length = which is [-1, 0, 1, 2, 3, 4, 5];
+console.log("line 60: ", unshifting.unshift(-2)) // 8 length = which is [-2, -1, 0, 1, 2, 3, 4, 5];
 
+let numbs = [30, 40, 50];
+let val = numbs.unshift(20);
+console.log("val: ", val) // output: 4]
+console.log("numbs: ", numbs) // output: [20, 30, 40, 50]
 
 /**
  * delete keyword -
@@ -71,8 +78,6 @@ unshifting.unshift(-2) // [-2, -1, 0, 1, 2, 3, 4, 5];
  *  delete() function will be O(n) To remove the first element from the beginning, we
  *  need to move all the following elements to the left.
  */
-
-
 
 
 
