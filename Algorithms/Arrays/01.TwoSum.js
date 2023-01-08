@@ -73,8 +73,11 @@ const twoSum2 = (nums, target) => {
         map[nums[idx]] = idx;
     } 
 }
-
-console.log("twoSum2: ", twoSum2([2,7,11,15], 9)) 
+// { diff: 3, map: {}, target: 6, 'nums[idx]': 3 }
+// { diff: 4, map: { '3': 0 }, target: 6, 'nums[idx]': 2 }
+// { diff: 2, map: { '2': 1, '3': 0 }, target: 6, 'nums[idx]': 4 }
+// twoSum2:  [ 1, 2 ]
+console.log("twoSum2: ", twoSum2([3,2,4], 6)) 
 
 /*
 Understand Problem:
