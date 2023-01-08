@@ -29,11 +29,54 @@
  *
  * */
 
-
 const twoSum = (nums, target) => {
-    // create hashmap
-
-    // iterate over num
-
-        // create to the value target - nums[idx]  ex. target = 9, nums[idx] = 2
+    //create pointers
+    let start = 0, end = nums.length - 1;
+    //initialize empty array
+    let results = [];             
+    let sortedNums = nums.sort(); 
+    //iterate                          
+        //if condition valid
+    while(start < end){
+        let temp = sortedNums[start] + sortedNums[end];
+        console.log(temp)
+        if(temp === target){
+            results.push(start, end)
+            break;
+        }
+        else if(temp < target) start++;
+        else end--;
+    }
+    return results
 }
+
+const twoSum2 = (nums, target) => {
+    // create hashmap
+    let map = {};
+    // iterate over num
+    for(let idx = 0; idx < nums.length; idx++) {
+        // create to the value target - nums[idx]  ex. target = 9, nums[idx] = 2
+        let diff = target - nums[idx]; // 2, 7, 11, 15
+        // if(diff >= 0 && map[diff] !== undefined) {
+        console.log({
+            "diff": diff,
+            "map": map,
+            "target": target,
+            "nums[idx]": nums[idx],
+        })
+
+        // { diff: 7, map: {}, target: 9, 'nums[idx]': 2 }
+        // { diff: 2, map: { '2': 0 }, target: 9, 'nums[idx]': 7 }
+        if(diff in map){
+            return [map[diff], idx];
+        }
+        map[nums[idx]] = idx;
+    } 
+}
+
+console.log("twoSum2: ", twoSum2([2,7,11,15], 9)) 
+
+/*
+Understand Problem:
+    Return indicies whose values sum to target
+*/
