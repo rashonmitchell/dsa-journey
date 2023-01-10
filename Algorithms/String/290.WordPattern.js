@@ -43,4 +43,7 @@
  * @return {boolean}
  */
 
-const wordPattern = function(pattern, s) {}
+
+const wordPattern = function(pattern, s) {
+
+}

@@ -29,27 +29,32 @@
  *
  * */
 
+// Two-pointer solution
 const twoSum = (nums, target) => {
-    //create pointers
-    let start = 0, end = nums.length - 1;
-    //initialize empty array
-    let results = [];             
-    let sortedNums = nums.sort(); 
-    //iterate                          
-        //if condition valid
-    while(start < end){
-        let temp = sortedNums[start] + sortedNums[end];
-        console.log(temp)
-        if(temp === target){
-            results.push(start, end)
+    // create our pointers slow & fast
+    let slow = 0, fast = slow + 1;
+    let sum = nums[slow] + nums[fast], results = null;
+    while(true){
+        sum = nums[slow] + nums[fast]; // 2,7,11,15
+        if(sum === target){
+            results = [slow, fast];
             break;
-        }
-        else if(temp < target) start++;
-        else end--;
-    }
-    return results
-}
+        };
+        fast++;
+        if(fast >= nums.length){
+            slow++;
+            fast = slow + 1;
+        };
+        if(slow >= nums.length) break;
+    };
+    return results;
+};
+console.log("twoSum: ", twoSum([3,2,4], 6));
 
+
+// another
+
+// hashmap solution
 const twoSum2 = (nums, target) => {
     // create hashmap
     let map = {};
@@ -58,12 +63,12 @@ const twoSum2 = (nums, target) => {
         // create to the value target - nums[idx]  ex. target = 9, nums[idx] = 2
         let diff = target - nums[idx]; // 2, 7, 11, 15
         // if(diff >= 0 && map[diff] !== undefined) {
-        console.log({
-            "diff": diff,
-            "map": map,
-            "target": target,
-            "nums[idx]": nums[idx],
-        })
+        // console.log({
+        //     "diff": diff,
+        //     "map": map,
+        //     "target": target,
+        //     "nums[idx]": nums[idx],
+        // })
 
         // { diff: 7, map: {}, target: 9, 'nums[idx]': 2 }
         // { diff: 2, map: { '2': 0 }, target: 9, 'nums[idx]': 7 }
