@@ -90,6 +90,9 @@ console.log("numbs: ", numbs) // output: [20, 30, 40, 50]
  *  
  */
 
+let arrReversed = [1, 2, 3, 4, 5];
+arrReversed.reverse();
+console.log("arrReversed: ", arrReversed) // output: [5, 4, 3, 2, 1]
 
 
 
