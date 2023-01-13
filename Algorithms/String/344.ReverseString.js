@@ -52,7 +52,7 @@ console.log("reverseString: ", reverseString(["h","e","l","l","o"]));
 
 // another
 
-const reverseString = function(str) {
+const reverseString2 = function(str) {
     let left = 0;
     let right = str.length - 1;
     while (left < right) {
