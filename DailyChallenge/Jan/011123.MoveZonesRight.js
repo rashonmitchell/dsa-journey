@@ -44,4 +44,40 @@
  */
 
 
-const moveTarget = (nums, target) => {};
+https://leetcode.com/problems/apply-operations-to-an-array/
+
+const moveTarget = (nums, target) => {
+    let arr1 = [];
+    let arr2 = [];
+    for( let i = 0; i < nums.length; i++){
+        if(nums[i] === target){
+            arr1.push(nums[i]);
+        } else{
+            arr2.push(nums[i]);
+        }
+    }
+    return arr1.concat(arr2);
+};
+console.log("moveTarget: ", moveTarget([5, 1, 6, 1], 1));
+
+/*
+Understand: 
+    Find numbers equal to target and put them at beginning of array. All other numbers remain in same relative order and are placed after the initial numbers matching the target.
+Devise:
+    Use two pointers to run through array
+    iterate through array and find numbers matching target. Create array of matching numbers, then create array of remainders and merge arrays together
+Code:
+*/
+
+
+const moveTargetRight = (nums, target) => {
+    let right = nums.length - 1;
+    for(; right >= 0; right--) {
+        if(nums[right] === target) break;
+    }
+    if(right < 0) return;
+    for(let left = right - 1; left >= 0; left--) {
+        if(nums[left] !== target) [nums[left], nums[right--]] = [nums[right], nums[left]];
+    }
+};
+console.log("moveTargetRight: ", moveTargetRight([-1, 2, 3, 5, 2, 2], 2));
