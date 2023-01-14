@@ -1,6 +1,6 @@
 /** 
  *
- * Move Zeroes Right
+ * Move Target
  *
  * Given an array nums and an integer target, you need to move the element which equal to target to the front of the array,
  * and the order of the remain elements can not be changed.
