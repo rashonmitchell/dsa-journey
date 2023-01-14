@@ -44,7 +44,6 @@
  */
 
 
-<<<<<<< HEAD
 https://leetcode.com/problems/apply-operations-to-an-array/
 
 const moveTarget = (nums, target) => {
@@ -72,24 +71,13 @@ Code:
 
 
 const moveTargetRight = (nums, target) => {
-=======
-const moveTarget = (nums, target) => {
->>>>>>> 2c8304b (2460 Apply Operations to an Array)
     let right = nums.length - 1;
     for(; right >= 0; right--) {
         if(nums[right] === target) break;
     }
-<<<<<<< HEAD
     if(right < 0) return;
     for(let left = right - 1; left >= 0; left--) {
         if(nums[left] !== target) [nums[left], nums[right--]] = [nums[right], nums[left]];
     }
 };
 console.log("moveTargetRight: ", moveTargetRight([-1, 2, 3, 5, 2, 2], 2));
-=======
-
-    for(let idx = right - 1; idx >= 0; idx--) {
-        if(nums[idx] !== target) [nums[idx], nums[right--]] = [num[right], nums[idx]];
-    }
-};
->>>>>>> 2c8304b (2460 Apply Operations to an Array)
