@@ -5,7 +5,6 @@
  * https://leetcode.com/problems/apply-operations-to-an-array/
  *
  * You are given a 0-indexed array nums of size n consisting of non-negative integers.
- * the relative order of the non-zero elements.
  * 
  * You need to apply n - 1 operations to this array where, in the ith 
  * operation (0-indexed), you will apply the following on the ith element of nums: 
@@ -56,6 +55,25 @@
  */
 
 
-const applyOperations = function(nums) {
-    
+const applyOperations = function(nums) { 
+    let left = 0, val = 0
+    for(let idx = 0; idx < nums.length; idx++){
+        if(nums[idx] === nums[idx + 1]) {
+            nums[idx] *= 2;
+            nums[idx + 1] = 0;
+        };
+    };
+    for(let idx = 0; idx < nums.length; idx++) {
+        if(nums[idx] !== val){
+            nums[left] = nums[idx];
+            left++;
+        };
+    };
+    for(let idx = left; idx < nums.length; idx++) 
+        nums[idx] = 0;
+    return nums;  
 };
+    
+    
+
+console.log("applyOperations: ", applyOperations([1,2,2,1,1,0]));

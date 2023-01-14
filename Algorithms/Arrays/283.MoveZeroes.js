@@ -65,7 +65,7 @@ console.log("moveZeroes: ", moveZeroes([0,1,0,3,12]));
 // Two-pointer
 const moveZeroes2 = function(nums) { // 0,1,0,3,12
     let left = 0;
-    for(let num of nums) { // O(n)                    // L
+    for(let num of nums) { // O(n)
         if(num !== 0) nums[left++] = num; // [1, 3, 12]     //[0,1,0,3,12]
     }
 
