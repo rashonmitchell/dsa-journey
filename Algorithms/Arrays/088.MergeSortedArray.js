@@ -138,4 +138,37 @@ const merge4 = function(nums1, m, nums2, n) {
 console.log("merge4: ", merge4([1,2,3,0,0,0], 3, [2,5,6], 3));
 
 
-/////// push repo please
+// merge 5
+const merge5 = function(nums1, m, nums2, n) {
+    let nums1Arr = nums1.slice(0, m)
+    let nums2Arr = nums2.slice(0, n);
+    let combined = 0;
+
+    while(nums1Arr.length > 0 && nums2Arr.length > 0){
+        const comparison = nums1Arr[0] - nums2Arr[0];
+        if(comparison <= 0){
+            nums1[combined] = nums1Arr[0];
+            nums1Arr.shift()
+            console.log("arr length: ", nums1Arr.length)
+            console.log("arr : ", nums1Arr)
+            combined++
+        } else{
+            nums1[combined] = nums2Arr[0];
+            nums2Arr.shift();
+            combined++
+        }
+    }
+    while(nums2Arr.length > 0){
+        nums1[combined] = nums2Arr[0];
+        nums2Arr.shift();
+        combined++;
+    }
+    while(nums1Arr.length > 0){
+        nums1[combined] = nums1Arr[0];
+        nums1Arr.shift();
+        combined++;
+    }
+
+}
+
+console.log("merge5: ", merge4([1,2,3,0,0,0], 3, [2,5,6], 3))
