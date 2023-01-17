@@ -140,12 +140,12 @@ console.log("merge4: ", merge4([1,2,3,0,0,0], 3, [2,5,6], 3));
 
 // merge 5
 const merge5 = function(nums1, m, nums2, n) {
-    let nums1Arr = nums1.slice(0, m)
-    let nums2Arr = nums2.slice(0, n);
+    let nums1Arr = nums1.slice(0, m)// 123 O(n)
+    let nums2Arr = nums2.slice(0, n);// 256 O(n)
     let combined = 0;
 
     while(nums1Arr.length > 0 && nums2Arr.length > 0){
-        const comparison = nums1Arr[0] - nums2Arr[0];
+        const comparison = nums1Arr[0] - nums2Arr[0];// 1 -2
         if(comparison <= 0){
             nums1[combined] = nums1Arr[0];
             nums1Arr.shift()
@@ -172,3 +172,5 @@ const merge5 = function(nums1, m, nums2, n) {
 }
 
 console.log("merge5: ", merge4([1,2,3,0,0,0], 3, [2,5,6], 3))
+
+// 1,2,2,2,5,6
