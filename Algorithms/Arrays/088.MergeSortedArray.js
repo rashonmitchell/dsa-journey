@@ -145,6 +145,12 @@ const merge5 = function(nums1, m, nums2, n) {
     let combined = 0;
 
     while(nums1Arr.length > 0 && nums2Arr.length > 0){
+        // if(nums1Arr <= nums2Arr) { // 1 <= 2
+        //     console.log("nums1: ", nums1Arr <= nums2Arr)
+        //     nums1[combined++]; 
+        // } else {
+        //     nums1[combined++];
+        // }
         const comparison = nums1Arr[0] - nums2Arr[0];// 1 -2
         if(comparison <= 0){
             nums1[combined] = nums1Arr[0];
