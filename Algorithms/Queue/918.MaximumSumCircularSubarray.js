@@ -51,5 +51,13 @@
 
 // Monotonic Queue Solution 
 const maxSubarraySumCircular = function(nums) {
-    let len = nums.length, sum = 0, max = Infinity, min = -Infinity,  currentMax = 0, currentMin = 0;
+    let sum = 0, max = Infinity, min = -Infinity,  currentMax = 0, currentMin = 0;
+    for(let num of nums) {
+        currentMax,
+        max,
+        currentMin,
+        min
+    }
+
+    return max > 0 ? : 
 };
