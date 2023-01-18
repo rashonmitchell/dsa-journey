@@ -53,11 +53,13 @@
 const maxSubarraySumCircular = function(nums) {
     let sum = 0, max = Infinity, min = -Infinity,  currentMax = 0, currentMin = 0;
     for(let num of nums) {
-        currentMax,
-        max,
-        currentMin,
-        min
+        currentMax = Math.max(currentMax + num, num), // 5 + 5 ... 10
+        max = Math.max(max, currentMax), // inf, 10
+        currentMin = Math.min(currentMin + num, num), // 0 + -3
+        min = Math.min(min, currentMin),
+        sum += num; // 10
     }
 
-    return max > 0 ? : 
+    return max > 0 ? Math.max(sum - min) : max;
 };
+console.log("max", maxSubarraySumCircular([5, -3, 5]))
