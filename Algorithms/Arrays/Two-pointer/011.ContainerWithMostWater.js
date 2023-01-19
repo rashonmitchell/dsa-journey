@@ -44,7 +44,12 @@
  * @return {number}
  */
 
-// Two-pointer approach
+// Two-pointer approach:
+
+// 1. create two pointers, one at the beginning of the array and one at the end of the array.
+// 2. create a variable to store the max area.
+// 3. While the two pointers do not overlap:
+
 const maxArea = function(height) {
     
 };
