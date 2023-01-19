@@ -45,11 +45,34 @@
  */
 
 // Two-pointer approach:
-
-// 1. create two pointers, one at the beginning of the array and one at the end of the array.
-// 2. create a variable to store the max area.
-// 3. While the two pointers do not overlap:
-
-const maxArea = function(height) {
-    
+    // 1. create two pointers, start and end
+    // 2. create a variable to store the max area.
+    // 3. While the two pointers do not overlap:
+    // 4. cal the area of the container 
+    // 5. if-cond the area is greater than max area....do-something
+    // 6. if-cond the height of the two-pointers.....?
+    // 7. return the max area
+const maxArea = function(height) { // [1,8,6,2,5,4,8,3,7]
+    let start = 0, end = height.length - 1, result = 0;
+    while(start < end) {
+        // base = (end - start) * height
+        const temp = (end - start) * Math.min(height[start], height[end]); 
+        if (temp > result) result = temp; 
+        if (height[start] < height[end]) start++;
+        else end--;
+    };
+    return result;
 };
+console.log("maxArea: ", maxArea([1,8,6,2,5,4,8,3,7]));
+
+// another
+
+// Array approach:
+const maxArea2 = function(height) {
+
+};
+
+// another
+
+// Greedy approach:
+const maxArea3 = function(height) {};
