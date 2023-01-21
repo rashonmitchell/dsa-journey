@@ -85,3 +85,18 @@ const minFlips = function(target) {
     // return result
     return result;
 };
+
+
+// another 
+
+
+const minFlips = function (target) {
+    let result = 0, state = 0;
+    for(let idx = 0; idx < target.length; idx++) {
+        if(target[idx] === "0" && state % 2 === 0) continue;
+        if(target[idx] === "1" && state % 2 === 1) continue;
+        state++;
+        result++; 
+    };
+    return result;
+};
