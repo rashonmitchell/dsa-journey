@@ -33,9 +33,9 @@
 const twoSum = (nums, target) => {
     // create our pointers slow & fast
     let slow = 0, fast = slow + 1;
-    let sum = nums[slow] + nums[fast], results = null;
+    let sum = nums[slow] + nums[fast], results = null; //slow=4     fast =5 
     while(true){
-        sum = nums[slow] + nums[fast]; // 2,7,11,15
+        sum = nums[slow] + nums[fast]; // 2,7,11,15  target = 8  sum = 26
         if(sum === target){
             results = [slow, fast];
             break;
@@ -50,6 +50,7 @@ const twoSum = (nums, target) => {
     return results;
 };
 console.log("twoSum: ", twoSum([3,2,4], 6));
+console.log("twoSum: ", twoSum([2,7,11,15], 8));
 
 
 // another
