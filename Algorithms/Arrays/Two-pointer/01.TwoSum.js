@@ -58,11 +58,11 @@ console.log("twoSum: ", twoSum([2,7,11,15], 8));
 // hashmap solution
 const twoSum2 = (nums, target) => {
     // create hashmap
-    let map = {};
+    let map = {};                   //nums = [3, 2, 4] target = 6 map = {}
     // iterate over num
     for(let idx = 0; idx < nums.length; idx++) {
         // create to the value target - nums[idx]  ex. target = 9, nums[idx] = 2
-        let diff = target - nums[idx]; // 2, 7, 11, 15
+        let diff = target - nums[idx]; // 2, 7, 11, 15    //
         // if(diff >= 0 && map[diff] !== undefined) {
         // console.log({
         //     "diff": diff,
