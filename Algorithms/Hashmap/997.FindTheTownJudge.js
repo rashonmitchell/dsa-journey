@@ -54,6 +54,14 @@
  */
 
 //  Array solution
+
+// thinking:
+// 1. create a hashmap with key = person, value = trust count
+// 2. iterate through trust array
+// 3. for each trust pair, increment the trust count of the person being trusted
+// 4. iterate through hashmap
+// 5. if a person has a trust count of n-1, return that person
+// 6. if no person has a trust count of n-1, return -1
 const findJudge = function(n, trust) {
     const array  = new Array(n + 1).fill(0); // 
     console.log("array: ", array);
@@ -111,4 +119,3 @@ const findJudge2 = function(n, trust) {
     // // if not, return -1
     // return -1
 };
-
