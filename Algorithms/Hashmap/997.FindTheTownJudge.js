@@ -9,10 +9,9 @@
  * 
  * If the town judge exists, then:
  * 
- * 
- * The town judge trusts nobody.
- * Everybody (except for the town judge) trusts the town judge.
- * There is exactly one person that satisfies properties 1 and 2.
+ *  1. The town judge trusts nobody.
+ *  2. Everybody (except for the town judge) trusts the town judge.
+ *  3. There is exactly one person that satisfies properties 1 and 2.
  * 
  * 
  * You are given an array trust where trust[i] = [ai, bi] representing that the
@@ -54,7 +53,62 @@
  * @return {number}
  */
 
-// Hashmap solution
+//  Array solution
 const findJudge = function(n, trust) {
+    const array  = new Array(n + 1).fill(0); // 
+    console.log("array: ", array);
+
+    console.log("trust: ", trust);
+    for(let [a1, b1] of trust){ // [1,3],[2,3],[3,1]
+        console.log("a: ", a1, array[a1]--); // 1->0   2   3
+        console.log("b: ", b1, array[b1]++); // 3 -> 1  3   1
+        //     1     3
+        // a:  0 b:  0
+
+        //     2     3
+        // a:  0 b:  1
+
+        //     3     1
+        // a:  2 b:  -1
+    }
+
+    for(let person = 1; person <= n; person++) {
+        if(array[person] === n - 1) return person;
+    };
+    return -1;
+}
+// console.log("findJudge: ", findJudge(2, [[1,2]]));
+console.log("findJudge: ", findJudge(3, [[1,3],[2,3],[3,1]]));
+// console.log("findJudge: ", findJudge(3, [[1,3],[2,3]]));
+
+// anothet
+
+// Hashmap solution
+const findJudge2 = function(n, trust) {
+    // // create with key/value pairs
+    // let map = {};
+
+    // // iterate over n
+    // for(let idx = 1; idx <= n; idx++) {
+    //     //  store inside of map
+    //     // map[idx] = map[idx] || 0;  //  or 
+    //     map[idx] = 0;
+    // };
+
+    // // iterate over trust
+    // for(let idx = 0; idx < trust.length; idx++) {
+    //     // [1,3] aka trust[i] = [ai, bi]
+    //     const [truster, trustee] = trust[idx];
+    //      // add up trust for each pair
+    //      map[trustee]++;
+    // };
     
+    // // iterate over our map
+    // for(let person in map) {
+    //     // if they trust him, return the person
+    //     if(map[person] === n - 1) return person;
+    // };
+    // // if not, return -1
+    // return -1
 };
+
