@@ -87,22 +87,39 @@ console.log("digitCount: ", digitCount("030"));
 
 // another 
 
-
 // Hashmap  w/ new Map()
 const digitCount2 = function(num) {
-    if (!num) return false;
-    const map = new Map(); // || map = {}
-    for (let numb of num) {  
-        map.set(numb, (map.get(numb) || 0) + 1); // map ={ 0: 1, 1: 2, 2: 1, }
-    }
-    for(let [key, value] of map) {
-        console.log("key", typeof [key, value])
-        if(num[key] !== value) return false;
-        console.log("+num[key]", typeof +num[key], typeof num[key])
-        
-    }
+    const map = new Map();
+    for (let digit of num) {
+        map.set(+digit, (map.get(+digit) || 0) + 1); // map ={ 0: 1, 1: 2, 2: 1, }
+        // or map.set(digit, (map.get(digit) || 0) + 1); // map ={ 0: 1, 1: 2, 2: 1, }
+    };
+    for (let [key, value] of map) {
+        // +num[key] means the digit value of num at index key....the "+" is to convert string to number
+        if (+num[key] !== value) return false;
+    };
     return true;
 };
 console.log("digitCount2: ", digitCount2("1210"));
+
+// coverting string to number
+// example: num = "1210" => 1210
+// 1. Using Unary Operator (+) => +num => 1210
+// 2. Number() function => Number(num) => 1210
+// 3. Using parseInt() function => parseInt(num) => 1210
+// 4. Using parseFloat() function => parseFloat(num) => 1210
+// 5. Using Math.floor() => Math.floor(num) => 1210
+// 6. Multiply with number => num * 1 => 1210
+// 7. Bitwise Double tilde (~~) Operator: bitwise NOT operator => ~~num => 1210
+// note: using any bitwise's operators will convert the string to number 
+   /**
+    * OR, XOR, AND, left shift, right shift, zero-fill right shift operators
+    * bitwise OR operator => num | 0 => 1210
+    * bitwise XOR operator => num ^ 0 => 1210
+    * bitwise AND operator => num & 0 => 1210
+    * bitwise left shift operator => num << 0 => 1210
+    * bitwise right shift operator => num >> 0 => 1210
+    * bitwise zero-fill right shift operator => num >>> 0 => 1210
+    */
 
 // num?num[key].filter(Boolean)
