@@ -15,6 +15,7 @@
  * Input: words =
  * ["cat","cats","catsdogcats","dog","dogcatsdog","hippopotamuses","rat","ratcatdogcat"]
  * Output: ["catsdogcats","dogcatsdog","ratcatdogcat"]
+ * 
  * Explanation: "catsdogcats" can be concatenated by "cats", "dog" and "cats"; 
  * "dogcatsdog" can be concatenated by "dog", "cats" and "dog"; 
  * "ratcatdogcat" can be concatenated by "rat", "cat", "dog" and "cat".
@@ -44,12 +45,40 @@
 // Trie solution
 const findAllConcatenatedWordsInADict = function(words) {};
 
-// another
-
-// Dynamic Programming solution
-const findAllConcatenatedWordsInADict_DP = function(words) {};
 
 // another
 
 // DFS solution
-const findAllConcatenatedWordsInADict_DFS = function(words) {};
+const findAllConcatenatedWordsInADict = function(words) {
+    const set = new Set(words), results = [], map = new Map();
+    for (let word of words) {
+        if (word.length < 2) continue; // 
+        if (dfs(word, set, map, 0)) results.push(word);
+    };
+
+    return results;
+
+    function dfs(w, set, map, position) {
+        if (position > 0 && map.get(w)) return map.get(w);
+        if (position > 0 && set.has(w)) {
+            map.set(w, true);
+            return map.get(w);
+        };
+
+        for (let idx = 1; idx < w.length; idx++) {
+            let left = w.slice(0, idx), right = w.slice(idx);
+            if (set.has(right) && dfs(left, set, map, position + 1)) {
+                map.set(w, true);
+                return map.get(w);
+            };
+        };
+
+        map.set(w, false);
+        return false;
+    }
+};
+
+// another
+
+// Dynamic Programming solution
+const findAllConcatenatedWordsInADict_DP = function(words) {};
