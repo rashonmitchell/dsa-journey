@@ -103,7 +103,7 @@ const digitCount2 = function(num) {
 console.log("digitCount2: ", digitCount2("1210"));
 
 // coverting string to number
-// example: num = "1210" => 1210
+// example: let num = "1210" => 1210
 // 1. Using Unary Operator (+) => +num => 1210
 // 2. Number() function => Number(num) => 1210
 // 3. Using parseInt() function => parseInt(num) => 1210
