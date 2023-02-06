@@ -99,5 +99,38 @@ const calculate = function(s) {
 
 // Map solution
 const calculate = function(s) {
-
+     // create storage variable
+     let stack = [], map = {
+        "+" : (a, b) => a + b,
+        "-" : (a, b) => a - b,
+        "*" : (a, b) => a * b,
+        "/" : (a, b) => Math.trunc(a / b),
+    }
+    // iterate through string
+    for (let i = 0; i < s.length; i++) {
+        // if character is a number
+        if (s[i] >= '0' && s[i] <= '9') {
+            // create a number variable
+            let num = 0;
+            // while the character is a number
+            while (s[i] >= '0' && s[i] <= '9') {
+                // add the number to the number variable
+                num = num * 10 + parseInt(s[i]);
+                // increment i
+                i++;
+            }
+            // decrement i
+            i--;
+            // push the number to the stack
+            stack.push(num);
+        } else if (s[i] !== ' ') {
+            // if the character is an operator
+            // get the last two numbers from the stack
+            let num2 = stack.pop(), num1 = stack.pop();
+            // push the result of the operation to the stack
+            stack.push(map[s[i]](num1, num2));
+        }
+    }
+    // return the result in the stack which is the last number
+    return stack[0];
 }
