@@ -2,6 +2,7 @@
 
 ### Map: A collection of key-value pairs that remembers the insertion order of the keys.    
 
+
 > Note: `📚 Maps are similar to objects`.    
 
 | Maps | Objects |
@@ -68,7 +69,7 @@ for (let student of students) {
 ```
 
 ## Hashmaps
-![hashmaps](/dsa-journey/assets/img/hashmap.png "Hashmaps example"){align=center}
+![hashmaps](/dsa-journey/assets/img/hashmap.jpg "Hashmaps example")
 
 (https://miro.medium.com/max/700/1*GLjtAmfB4uOCQGf9i00p-g.png)<p style="text-align:center; color:hotpink;">How to declare and initialize a new JS hashmap object.</p>
 
