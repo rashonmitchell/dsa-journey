@@ -55,6 +55,8 @@ let hashMap = function() {
     };
 }
 
+// for(let [key, value] of map) {}
+
 let ownMap = new hashMap()
 ownMap.set('works at Google', 'Gabriel & Teddy');
 ownMap.set('chicago', 'IL'),

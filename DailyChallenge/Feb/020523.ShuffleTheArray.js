@@ -44,5 +44,25 @@
 
 
 const shuffle = function(nums, n) {
-    
+    let result = [];
+    for(let idx = 0; idx < n; idx++) {
+        result.push(nums[idx], nums[idx + n]);
+    };
+    return result;
 };
+
+const shuffle2 = function(nums, n){
+    //empty array
+    //n variable                                                              i
+    let arr = [], y = n; // n = 4  nums = [1,2,3,4,4,3,2,1]   arr = [1, 4, 2, 3, 3, 2, 4, 1]
+                                //                                                         n   
+    //loop
+    for(let i = 0; i < n; i++){
+        arr.push(nums[i], nums[y++]) //push nums[i]
+        //arr.push(nums[y]) //push nums[y]
+        //increment
+        // y++;
+        // if(i === n - 1) return arr;      
+    }
+    return arr;
+}
