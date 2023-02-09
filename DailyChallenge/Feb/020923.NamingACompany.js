@@ -57,5 +57,6 @@
 // hashmap
 
 const distinctNames = function(ideas) {
-    
+    const lookup = "a".charCodeAt();
+    result = new Set({})
 };
