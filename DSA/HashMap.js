@@ -48,6 +48,15 @@ let hashMap = function() {
         return (result.length > 0) ? result : null;
     };
 
+    // entries
+    this.entries = function() {  //key = 'wife', value = 1
+        return this.collection[key].reduce((acc, key) => {
+            if (key === undefined) {
+                acc.push(this.collection[key]);
+            };
+        }, []);
+    }
+
     // clear
     this.clear = function() {
         this.collection = {};
