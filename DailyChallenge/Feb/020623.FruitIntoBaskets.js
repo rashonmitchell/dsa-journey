@@ -62,9 +62,49 @@
 
 // Hashmap
 const totalFruit = function(fruits) {
-  
+    let max = 0;
+    let map = new Map();
+    let start = 0;
+    for (let end = 0; end < fruits.length; end++) {
+        map.set(fruits[end], map.get(fruits[end]) + 1 || 1);
+        while (map.size > 2) {
+            map.set(fruits[start], map.get(fruits[start]) - 1);
+            if (map.get(fruits[start]) === 0) map.delete(fruits[start]);
+            start++;
+        }
+        max = Math.max(max, end - start + 1);
+    }
+    return max;
 };
 
 console.log(totalFruit([0,1,2,2]))
 
-https://prod.liveshare.vsengsaas.visualstudio.com/join?B8841A8F3BAF054F85CBAC74926D569418C0
+// Sliding Window
+const totalFruit = function(fruits) {
+    let max = 0;
+    let start = 0;
+    let end = 0;
+    let first = -1;
+    let second = -1;
+    while (end < fruits.length) {
+        if (fruits[end] === first || fruits[end] === second) {
+            end++;
+        } else if (first === -1) {
+            first = fruits[end];
+            end++;
+        } else if (second === -1) {
+            second = fruits[end];
+            end++;
+        } else {
+            max = Math.max(max, end - start);
+            start = end - 1;
+            while (fruits[start] === second) start--;
+            start++;
+            first = second;
+            second = fruits[end];
+            end++;
+        }
+    }
+    max = Math.max(max, end - start);
+    return max;
+};
