@@ -73,64 +73,113 @@ const calculate = function(s) {
 
 // Stack solution
 const calculate = function(s) {
+    // create a stack
     let stack = [];
+
+    // create a variable to store the current number
     let num = 0;
+
+    // create a variable to store the current sign
     let sign = '+';
+
+    // iterate through the string
     for (let i = 0; i < s.length; i++) {
+        // if the character is a number
         if (s[i] >= '0' && s[i] <= '9') {
-        num = num * 10 + parseInt(s[i]);
+            // add the number to the number variable
+            num = num * 10 + (+s[i]);
         }
+
+        // if the character is an operator or the end of the string
         if (s[i] < '0' && s[i] !== ' ' || i === s.length - 1) {
-        if (sign === '+') {
-            stack.push(num);
-        } else if (sign === '-') {
-            stack.push(-num);
-        } else if (sign === '*') {
-            stack.push(stack.pop() * num);
-        } else if (sign === '/') {
-            stack.push(parseInt(stack.pop() / num));
-        }
-        sign = s[i];
-        num = 0;
+            // if the sign is a plus
+            if (sign === '+') {
+                stack.push(num); // push the number to the stack
+            } else if (sign === '-') { // if the sign is a minus
+                stack.push(-num); // push the negative number to the stack
+            } else if (sign === '*') { // if the sign is a multiply
+                // multiply the last number in the stack by the current number and push it to the stack
+                stack.push(stack.pop() * num); // ex: 3 * 2 = 6 -> [6] -> 6 * 2 = 12 -> [12]
+            } else if (sign === '/') { // if the sign is a divide
+                // divide the last number in the stack by the current number and push it to the stack
+                stack.push(parseInt(stack.pop() / num)); // ex: 3 / 2 = 1 -> [1] -> 1 / 2 = 0 -> [0]
+            }
+            // set the sign to the current sign
+            sign = s[i];
+
+            // reset the number variable
+            num = 0;
         }
     }
+
+    // return the sum of the stack
     return stack.reduce((a, b) => a + b);
 }
 
-// Map solution
+// No stack solution
 const calculate = function(s) {
-     // create storage variable
-     let stack = [], map = {
-        "+" : (a, b) => a + b,
-        "-" : (a, b) => a - b,
-        "*" : (a, b) => a * b,
-        "/" : (a, b) => Math.trunc(a / b),
-    }
-    // iterate through string
+    if (s === null || s.length === 0) return 0;
+    let sum = 0, result = 0, current = 0;
+
     for (let i = 0; i < s.length; i++) {
-        // if character is a number
-        if (s[i] >= '0' && s[i] <= '9') {
-            // create a number variable
-            let num = 0;
-            // while the character is a number
-            while (s[i] >= '0' && s[i] <= '9') {
-                // add the number to the number variable
-                num = num * 10 + parseInt(s[i]);
-                // increment i
-                i++;
-            }
-            // decrement i
-            i--;
-            // push the number to the stack
-            stack.push(num);
-        } else if (s[i] !== ' ') {
-            // if the character is an operator
-            // get the last two numbers from the stack
-            let num2 = stack.pop(), num1 = stack.pop();
-            // push the result of the operation to the stack
-            stack.push(map[s[i]](num1, num2));
+        let c = s.charAt(i);
+        if (c >= '0' && c <= '9') {
+            current = current * 10 + (+c);
+        } else if (c === '+' || c === '-') {
+            sum += result;
+            result = c === '+' ? current : -current;
+            current = 0;
+        } else if (c === '*' || c === '/') {
+            result = c === '*' ? result * current : ~~(result / current);
+            current = 0;
         }
     }
-    // return the result in the stack which is the last number
-    return stack[0];
+    sum += result;
+    return sum;
+
 }
+
+// No stack solution
+const calculate = function(s) {
+    // create a variable to store the current number 
+    let num = 0, result = 0, current = 0;
+    let sign = '+'; // the sign before the current number 
+    for (let i = 0; i < s.length; i++) {
+        if (s[i] >= '0' && s[i] <= '9') {
+            num = num * 10 + parseInt(s[i]);
+        }
+
+        // if the character is an operator or the end of the string
+        if (s[i] < '0' && s[i] !== ' ' || i === s.length - 1) {
+            if (sign === '+') {
+                result += current;
+                current = num;
+            } else if (sign === '-') {
+                result += current;
+                current = -num;
+            } else if (sign === '*') {
+                current = current * num;
+            } else if (sign === '/') {
+                current = +(current / num);
+            }
+            sign = s[i];
+            num = 0;
+        }
+    }
+    result += current;
+    return result;
+}
+
+const calculate = function(s) {
+    const calculator = s.match(/(\d+)|[+-/*]/g);
+	const addition = [+calculator.shift()]; // 
+	const operator = {
+		'+': (num) => addition.push(num),
+		'-': (num) => addition.push(-num),
+		'*': (num) => addition.push(addition.pop() * num),
+		'/': (num) => addition.push(addition.pop() / num | 0),
+	};
+
+	calculator.forEach((str, index) => operator[str]?.(+calculator[index + 1]));
+	return addition.reduce((result, num) => result + num);
+};

@@ -62,11 +62,9 @@
 
 // Hashmap
 const totalFruit = function(fruits) {
-    let map = {};
-    map[fruits[0]] = "apple"
-    // map:{ '0,1,2,2': 1 }
-    // map: { 0: "apple"}
-    console.log("map: ", map)
+  
 };
 
 console.log(totalFruit([0,1,2,2]))
+
+https://prod.liveshare.vsengsaas.visualstudio.com/join?B8841A8F3BAF054F85CBAC74926D569418C0
