@@ -54,8 +54,28 @@
  * @return {number}
  */
 
-// hashmap
+// hashmap w/ Set()
+const distinctNames = function (ideas) {
+    let map = {};
+    for (idea of ideas) {
+        let firstChar = idea.slice(0, 1), others = idea.slice(1);
+        if (!map[firstChar]) {
+            map[firstChar] = new Set(); // or map[firstChar] = new Set([others]); 
+        };
+        map[firstC].add(others);
+    };
 
-const distinctNames = function(ideas) {
-    
+    let count = 0, keys = Object.keys(map);
+    for (let idx = 0; idx < keys.length; idx++) {
+        for (let j = idx + 1; j < keys.length; j++) {
+            let sameCount = 0, firstLetterSet = map[keys[idx]], secondLetterSet = map[keys[j]]
+            for (let element of firstLetterSet) {
+                if (secondLetterSet.has(element)) {
+                    sameCount++;
+                };
+            };
+            count += 2 * (firstLetterSet.size - sameCount) * (secondLetterSet.size - sameCount); // 
+        };
+    };
+    return count;
 };
