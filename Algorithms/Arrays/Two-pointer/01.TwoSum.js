@@ -53,7 +53,9 @@ console.log("twoSum: ", twoSum([3,2,4], 6));
 console.log("twoSum: ", twoSum([2,7,11,15], 8));
 
 
-// another
+/*Understand Problem:
+    Return indicies whose values sum to target
+*/
 
 // hashmap solution
 const twoSum2 = (nums, target) => {
@@ -87,7 +89,59 @@ const twoSum2 = (nums, target) => {
 // twoSum2:  [ 1, 2 ]
 console.log("twoSum2: ", twoSum2([3,2,4], 6)) 
 
+
+
+
 /*
-Understand Problem:
-    Return indicies whose values sum to target
+Understand the problem:
+    There is exactly one solution. Find the indices whose values add to target
+Devise a plan:
+    use nested loops to compare values. If sum of two values equals target, return the index.
+Code:
+    >>Brute Force Solution<<
+*/                    
+var twoSum3 = function(nums, target) {   // nums = [3,3,3,4,5,6,7] target 6
+    // create empty array                               1
+    let result = [];
+    //use nested loops to compare two values
+    for(let i = 0; i < nums.length; i++){
+        for(let j = i + 1; j < nums.length; j++){
+            if(nums[i] + nums[j] === target){
+                result.push(i)
+                result.push(j)
+            }
+        }
+    }
+    //return array after loop is finished
+    return result
+};
+console.log("twoSum3:", twoSum3([2,7,11,15], 9)) //target = 9 output: [0, 1]
+
+
+/*
+Understand the problem
+    find the first indices that sum to our target. Return these indices in array form.
+Devise a plan
+    use map to store key value pairs.
+    use key value pairs to check if number to find is stored
+    use the numToFind as key in map and the index as it's value
+    if stored, we found our indices to find and return its value and the current i in array
+Code:
 */
+//Hashmap storing number to find as Key
+var twoSum4 = function(nums, target) {   // nums = [3, 2, 4] target = 6
+    //create map = {'3': 0, '4': 1, '': }
+    let map = {};
+    //loop through nums array;
+    for(let i = 0; i < nums.length; i++){
+        //create var for number to find
+        let numToFind = target - nums[i]; // 6 - 4 = 2;
+        if(nums[i] in map){ 
+            return [map[nums[i]], i] //[1, 2]
+        } else{
+            map[numToFind] = i; //map[4] = 1
+        }
+    }
+};
+
+console.log("twoSum4:", twoSum4([3, 2, 4], 6)) //target = 6 output: [1, 2] 
