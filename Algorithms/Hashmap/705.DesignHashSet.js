@@ -46,9 +46,13 @@
  * 
  * 
  */
+// i = ["MyHashSet", "add", "add", "contains", "contains", "add", "contains","remove", "contains"]
+// i = [[],           [1],   [2],     [1],         [3],     [2],     [2],       [2],       [2]]
+// o = [null,         null,  null,   true,        false,    null,   true,       null,     false]
+
 
 const  MyHashSet = function() {
-    
+    this.set = {};
 };
 
 /** 
@@ -56,7 +60,7 @@ const  MyHashSet = function() {
  * @return {void}
  */
 MyHashSet.prototype.add = function(key) {
-    
+    this.set[key] = true;
 };
 
 /** 
@@ -64,15 +68,26 @@ MyHashSet.prototype.add = function(key) {
  * @return {void}
  */
 MyHashSet.prototype.remove = function(key) {
-    
+    // check if we have key, if so delete it somehow or maybe set to null?
+    delete this.set[key];
 };
 
 /** 
  * @param {number} key
  * @return {boolean}
+ *
+ * hasOwnProperty - Determines whether an object has a property with the specified name.
+ * @param v — A property name.
+ *
+ * call() - 
+ * Calls a method of an object, substituting another object for the current object.
+ * @param thisArg — The object to be used as the current object.
+ * @param argArray — A list of arguments to be passed to the method.
+ *
+ *
  */
 MyHashSet.prototype.contains = function(key) {
-    
+    return Object.prototype.hasOwnProperty.call(this.set, key);
 };
 
 /** 
