@@ -117,7 +117,32 @@ var twoSum3 = function(nums, target) {   // nums = [3,3,3,4,5,6,7] target 6
 };
 console.log("twoSum3:", twoSum3([2,7,11,15], 9)) //target = 9 output: [0, 1]
 
+const twoSummy = function(n, t) {
+    let map = new Map(), res = [];
+    for (let idx = 0; idx < n.length; idx++) {
+        if (map.get(n[idx]) !== null) {
+            res[0] = map.get(n[idx]);
+            res[1] = idx;
+            return res;
+        } else {
+            map.set(target - n[idx], idx);
+        }
+    }
+    return res;
+}
 
+console.log("twoSummy:", twoSummy([2,7,11,15], 9)) //target = 9 output: [0, 1]
+
+const twoSumer = function(n, t) {
+    let map = {}, len = n.length;
+    for (let idx = 0; idx < len; idx++) {
+        if (n[idx] in map) return [map[n[idx]], idx];
+        map[t - n[idx]] = idx;
+    }
+    return [-1, -1];
+}
+
+console.log("twoSumer:", twoSumer([2,7,11,15], 9)) //target = 9 output: [0, 1]
 /*
 Understand the problem
     find the first indices that sum to our target. Return these indices in array form.
