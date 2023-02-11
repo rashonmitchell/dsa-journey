@@ -87,8 +87,8 @@ const maxArea3 = function(height) {};
     Devise a Plan:
         Brute Force
         Use nested loops to find area between two indexes and its values. 
-        use a holder variable to store current highest number. at end of loops last number remains
-        return highest number
+        use Math.min and Math.max to find the value we are looking for to plug into area formulal
+        return maxArea
     Code: Brute Force
                                                          i
                                         Input: height = [1,8,6,2,5,4,8,3,7]
@@ -101,14 +101,10 @@ const maxArea4 = function(height) {
     //use nested loops to work with values
     for(let i = 0; i < height.length; i++){
         for(let j = i + 1; j < height.length; j++){
-            let area1 = (j - i) * height[i];
-            let area2 = (j - 1) * height[j];
-            if(height[i] <= height[j] && area1 > maxArea){
-                maxArea = area1; //maxArea = 1
-            }
-            else if(height[i] > height[j] && area2 > maxArea){
-                maxArea = area2
-            }
+            const base = j - i;
+            const useHeight = Math.min(height[i], height[j]);
+            const area = base * useHeight;
+            maxArea = Math.max(maxArea, area);
         }
     }
     //return max Area
