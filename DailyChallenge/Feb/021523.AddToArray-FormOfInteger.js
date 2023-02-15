@@ -60,6 +60,16 @@
 const addToArrayForm = function(num, k) {
     let n = BigInt(num.join('')) + BigInt(k);
     return n.toString().split('').map(digit => BigInt(digit));
+
+}
+
+// or
+
+// BigInt solution: 
+const addToArrayForm = function(num, k) {
+    num = BigInt(num.join(''));
+    k = BigInt(k.toString());
+    return (num + k).toString().split('');
 }
 
 // another
