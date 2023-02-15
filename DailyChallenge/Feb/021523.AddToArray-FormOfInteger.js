@@ -55,6 +55,15 @@
  * @return {number[]}
  */
 
+
+// BigInt solution: 
+const addToArrayForm = function(num, k) {
+    let n = BigInt(num.join('')) + BigInt(k);
+    return n.toString().split('').map(digit => BigInt(digit));
+}
+
+// another
+
 // Array solution:
 const addToArrayForm = function(num, k) {
     // convert k to array
