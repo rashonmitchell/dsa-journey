@@ -43,4 +43,4 @@ const countOdds = function(low, high) {
     // if high is odd and not equal to low + 2 * num bc that would mean there are an even number of odds between low and high
     if(high > low + 2 * num && isOdd(high)) result++; 
     return result;
-};
+}
