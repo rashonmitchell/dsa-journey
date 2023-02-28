@@ -69,7 +69,7 @@
  * Example 1:
  * Input: grid = [[0,1],[1,0]]
  * Output: [[0,1],[1,0],[1,1],[1,1],[1,0]]
- * Explanation: The explanation of this example is shown below:
+ * Explanation: The explanation of this example is shown below: /dsa-journey/assets/img/e1tree.jpg
  * Notice that 0 represnts False and 1 represents True in the photo
  * representing the Quad-Tree.
  * 
@@ -103,7 +103,7 @@
  * The topLeft, bottomLeft and bottomRight each has the same value.
  * The topRight have different values so we divide it into 4 sub-grids where
  * each has the same value.
- * Explanation is shown in the photo below: /dsa-journey/assets/img/e1tree.jpg
+ * Explanation is shown in the photo below: /dsa-journey/assets/img/e2tree.jpg
  * 
  * 
  * Constraints:
