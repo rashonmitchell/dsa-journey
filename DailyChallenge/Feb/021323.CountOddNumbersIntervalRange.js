@@ -47,35 +47,4 @@ const countOdds = function(low, high) {
     if(high > low + 2 * num && isOdd(high)) result++;    // 3 + 2 * 3 and isOdd(7) is odd then result++
 
     return result;
-
-};
-
-console.log("countOdds:", countOdds(3, 7))
-
-/*
-Understand the Problem:
-    return the count of numbers that are odd between low and high
-Devise a Plan:
-    set empty variable for count
-    loop through and see if value modulus 3 equals zero if so count++
-
-Code: Brute Force
-                            low = 3, high = 7
-*/
-
-const countOdds2 = function(low, high) {
-
-    //create counter
-    let result = 0;   //result =
-    //loop
-    while(low <= high){
-        //if modulus of 1 equals zero count++ and then low++
-        if(low % 2 === 1) result++, low++;
-        else low++;
-    }
-    
-    return result;
-
-};
-
-console.log("countOdds2:", countOdds2(3, 7))
+}
