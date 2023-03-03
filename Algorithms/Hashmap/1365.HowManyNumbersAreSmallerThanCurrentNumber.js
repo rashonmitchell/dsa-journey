@@ -56,3 +56,10 @@ const smallerNumbersThanCurrent = function(nums) {
     }
     return nums.map(num => map[num]);
 };
+
+// destructive array solution
+const smallerNumbersThanCurrent = function(nums) {
+    let sorted = [...nums].sort((a, b) => a - b);
+    return nums.map(num => sorted.indexOf(num));
+}
+
