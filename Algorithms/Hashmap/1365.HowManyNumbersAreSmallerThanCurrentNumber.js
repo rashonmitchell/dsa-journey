@@ -58,8 +58,64 @@ const smallerNumbersThanCurrent = function(nums) {
 };
 
 // destructive array solution
-const smallerNumbersThanCurrent = function(nums) {
+const smallerNumbersThanCurrent2 = function(nums) {
     let sorted = [...nums].sort((a, b) => a - b);
     return nums.map(num => sorted.indexOf(num));
 }
 
+
+
+/*
+Understand:
+    return an array of values that represent how many numbers in our array are smaller than current number.
+Devise a plan:
+    loop through array and compare current value to second value
+        if value is less than current value, add to number. Push that number after loop ends
+    
+        return array that was cultivated
+Code it out: Brute Force
+*/
+
+var smallerNumbersThanCurrent3 = function(nums) {
+    //create empty array and counter
+    let results = [], counter = 0;
+    //nested loops to compare values
+    for(let i = 0; i < nums.length; i++){
+        //start at index zero to compare all values
+        for(let j = 0; j < nums.length; j++){
+            //if cond greater than or less than
+            if(nums[i] > nums[j]) counter++;
+        }
+        results.push(counter)
+        counter = 0;
+    }
+    return results;
+};
+
+console.log("smallerNumbersThanCurrent3:", smallerNumbersThanCurrent3([8,1,2,2,3])) // output: [4,0,1,1,3]
+
+/*
+Understand:
+    return an array of values that represent how many numbers in our array are smaller than current number.
+Devise a plan:
+    sort array and return the index value
+Code it out: Hashmap Solution
+*/
+
+var smallerNumbersThanCurrent4 = function(nums) {
+    //create a new hash map
+    let map = new Map();
+
+    // declare new array in ascending order
+    console.log("nums:", nums)
+    let sorted = [...nums].sort((a, b) => a - b);
+    console.log("sorted:", sorted)
+
+    //iterate through sorted array and set the number and its index to a Map(skip any that already exists in map)
+    sorted.forEach((number, idx) => map.has(number) ? null : map.set(number, idx));
+
+    //iterate through original input and create a new array with the current number's value from the map and return
+    return nums.map(x => map.get(x));
+};
+
+console.log("smallerNumbersThanCurrent4:", smallerNumbersThanCurrent4([8,1,2,2,3])) // output: [4,0,1,1,3]
