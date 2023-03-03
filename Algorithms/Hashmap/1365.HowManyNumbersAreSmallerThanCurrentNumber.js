@@ -59,10 +59,10 @@ const smallerNumbersThanCurrent = function(nums) {
 
 // destructive array solution
 const smallerNumbersThanCurrent2 = function(nums) {
+    // sort the array destructively and then map the original array to the sorted array
     let sorted = [...nums].sort((a, b) => a - b);
     return nums.map(num => sorted.indexOf(num));
 }
-
 
 
 /*
