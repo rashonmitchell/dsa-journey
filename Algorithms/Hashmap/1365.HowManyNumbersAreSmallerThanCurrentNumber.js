@@ -46,6 +46,8 @@
  */
 
 // hash map solution
+// time complexity: O(n)
+// space complexity: O(n)
 const smallerNumbersThanCurrent = function(nums) {
     let map = {};
     let sorted = [...nums].sort((a, b) => a - b);
@@ -58,6 +60,8 @@ const smallerNumbersThanCurrent = function(nums) {
 };
 
 // destructive array solution
+// time complexity: O(n log n)
+// space complexity: O(n)
 const smallerNumbersThanCurrent2 = function(nums) {
     // sort the array destructively and then map the original array to the sorted array
     let sorted = [...nums].sort((a, b) => a - b);
@@ -75,7 +79,9 @@ Devise a plan:
         return array that was cultivated
 Code it out: Brute Force
 */
-
+// brute force solution
+// time complexity: O(n^2)
+// space complexity: O(n)
 const smallerNumbersThanCurrent3 = function(nums) {
     //create empty array and counter
     let results = [], counter = 0;
@@ -102,6 +108,9 @@ Devise a plan:
 Code it out: Hashmap Solution
 */
 
+// hashmap solution
+// time complexity: O(n)
+// space complexity: O(n)
 const smallerNumbersThanCurrent4 = function(nums) {
     //create a new hash map
     let map = new Map();
