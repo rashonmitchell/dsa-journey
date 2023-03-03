@@ -76,7 +76,7 @@ Devise a plan:
 Code it out: Brute Force
 */
 
-var smallerNumbersThanCurrent3 = function(nums) {
+const smallerNumbersThanCurrent3 = function(nums) {
     //create empty array and counter
     let results = [], counter = 0;
     //nested loops to compare values
@@ -102,7 +102,7 @@ Devise a plan:
 Code it out: Hashmap Solution
 */
 
-var smallerNumbersThanCurrent4 = function(nums) {
+const smallerNumbersThanCurrent4 = function(nums) {
     //create a new hash map
     let map = new Map();
 
