@@ -76,13 +76,44 @@ function partition(arr, left, right) {
 
 // another solution
 
+// Quick Sort solution
+// time complexity: O(nlogn)
+// space complexity: O(1)
+const findKthLargest = function(nums, k) {
+    const n = nums.length;
+    quickSort(nums, 0, n - 1);
+    return nums[n - k];
+};
+
+function quickSort(arr, left, right) {
+    if (left >= right) return;
+    const pivotIndex = partition(arr, left, right);
+    quickSort(arr, left, pivotIndex - 1);
+    quickSort(arr, pivotIndex + 1, right);
+};
+
+function partition(arr, left, right) {
+    const pivot = arr[right];
+    let idx = left;
+    for (let j = left; j < right; j++) {
+        if (arr[j] < pivot) {
+            [arr[idx], arr[j]] = [arr[j], arr[idx]];
+            idx++;
+        }
+    }
+    [arr[idx], arr[right]] = [arr[right], arr[idx]];
+    return idx;
+}
+
+// another solution
+
 // Sort solution
 // time complexity: O(nlogn)
 // space complexity: O(1)
-// const findKthLargest = function(nums, k) {
-//     nums.sort((a, b) => b - a);
-//     return nums[k - 1];
-// };
+const findKthLargest = function(nums, k) {
+    nums.sort((a, b) => b - a);
+    return nums[k - 1];
+};
 
 // another solution
 
