@@ -35,7 +35,58 @@
  * @return {number}
  */
 
-// Heap (Priority Queue) solution
+// Quick Select solution
+// time complexity: O(n)
+// space complexity: O(1)
 const findKthLargest = function(nums, k) {
-    
+    const n = nums.length;
+    return quickSelect(nums, 0, n - 1, n - k);
 };
+
+function quickSelect(arr, left, right, k) {
+    if (left === right) return arr[left];
+    const pivotIndex = partition(arr, left, right);
+    if (k === pivotIndex) return arr[k];
+    else if (k < pivotIndex) return quickSelect(arr, left, pivotIndex - 1, k);
+    else return quickSelect(arr, pivotIndex + 1, right, k);
+};
+
+function partition(arr, left, right) {
+    const pivot = arr[right];
+    let idx = left;
+    for (let j = left; j < right; j++) {
+        if (arr[j] < pivot) {
+            [arr[idx], arr[j]] = [arr[j], arr[idx]];
+            // or
+            // swap(arr, idx, j);
+            idx++;
+        }
+    }
+    [arr[idx], arr[right]] = [arr[right], arr[idx]];
+    // or
+    // swap(arr, idx, right);
+    return idx;
+}
+
+// function swap(arr, idx, j) {
+//     const temp = arr[idx];
+//     arr[idx] = arr[j];
+//     arr[j] = temp;
+// }
+
+// another solution
+
+// Sort solution
+// time complexity: O(nlogn)
+// space complexity: O(1)
+// const findKthLargest = function(nums, k) {
+//     nums.sort((a, b) => b - a);
+//     return nums[k - 1];
+// };
+
+// another solution
+
+// Heap (Priority Queue) solution
+// time complexity: O(nlogk)
+// space complexity: O(k)
+// const findKthLargest = function(nums, k) {};
