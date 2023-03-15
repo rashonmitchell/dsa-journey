@@ -53,47 +53,6 @@
  * @return {string}
  */
 
-// 
-const pyramidDescent = function(pyramid, target) {
-    let path = '';
-    let row = 0;
-    let col = 0;
-    let product = pyramid[0];
-    while (product !== target) {
-        let left = pyramid[row + col + 1];
-        let right = pyramid[row + col + 2];
-        if (product * left < target) {
-            product *= left;
-            path += 'L';
-            col++;
-        } else if (product * right < target) {
-            product *= right;
-            path += 'R';
-            col += 2;
-        } else {
-            return 'No path found';
-        }
-        row++;
-    }
-    return path;
-};
-
-console.log(pyramidDescent([2,4,3,3,2,6,2,9,5,2,10,5,2,15,5], 720));
-
-// Output: LRLL
-
-// Desktop/DEV/dsa-journey/Algorithms/Interview Question/PyramidPuzzle.js
-// Path: Algorithms/Interview Question/PyramidPuzzle.js
-
-// another solution
-
-/**
- * @param {number[]} pyramid
- * @param {number} target
- * @return {string}
- *  
- */
-
 // DFS with recursion
 
 // thinking:
@@ -102,27 +61,42 @@ console.log(pyramidDescent([2,4,3,3,2,6,2,9,5,2,10,5,2,15,5], 720));
 // 3. if product < target, go left and right
 // 4. if left path is 'No path found', return right path
 // 5. if right path is 'No path found', return left path
-// 6. if both left and right path are not 'No path found', return left path
+// 6. if both left and right path are not 'No path focleaund', return left path
 
 const pyramidDescent = function(pyramid, target) {
-    let path = '';
-    let row = 0;
-    let col = 0;
-    let product = pyramid[0];
-    let result = dfs(pyramid, target, path, row, col, product);
-    return result;
-};
+    let result = '';
+    const dfs = function(current = 1, idx = 0, total = pyramid[0], path = '') {
+        const row = pyramid[current];
+        const options = [ row[idx], row[idx + 1]];
 
-const dfs = function(pyramid, target, path, row, col, product) {
-    if (product === target) {
-        return path;
+        options.forEach((number, index) => {
+            // idx === 0 go left, idx === 1 go right
+            const direction = index ? 'R' : 'L'; 
+            current++;
+            total *= number;
+            path += direction;
+
+            // pop it up the stack recursion
+            if (total === target && current === pyramid.length) {
+                result = path;
+                return true;
+            } else if (current < pyramid.length) {
+                idx += index;
+                dfs(current, idx, total, path)
+            }
+
+            current--;
+            total /= number;
+            path = path.slice(0, -1);
+        })
+
+        if (result) return result;
+        else return 'No path found';
     }
-    if (product > target) {
-        return 'No path found';
-    }
-    let left = pyramid[row + col + 1];
-    let right = pyramid[row + col + 2];
-    let leftPath = dfs(pyramid, target, path + 'L', row + 1, col, product * left);
-    let rightPath = dfs(pyramid, target, path + 'R', row + 1, col + 1, product * right);
-    return leftPath === 'No path found' ? rightPath : leftPath;
+    dfs();
+    return result;
 }
+
+// output: LRLL
+// 2 * 4 * 3 * 2 * 9 * 5 * 2 * 15 * 5 = 720
+console.log(pyramidDescent([[2],[4, 3],[3, 2, 6],[2, 9, 5, 2],[10, 5, 2, 15, 5]], 720));

@@ -97,10 +97,10 @@ const pyramidDescent = function(pyramid, target) {
     let product = pyramid[0];
     while (product !== target) {
          // set left and right side
-        let left = pyramid[row + col + 1];
-        let right = pyramid[row + col + 2];
+        let left = pyramid[row + col + 1]; // 0,1
+        let right = pyramid[row + col + 2]; // 0, 2
 
-        if(product * left < target) {
+        if(product * left < target) { // 1 * 0, 1 < 2
             product *= left;
             path += 'L';
             col++;
