@@ -39,3 +39,6 @@ const findDuplicate = function(nums) {
 
     return ptr1;
 };
+
+
+// another
